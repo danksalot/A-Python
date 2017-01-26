@@ -5,6 +5,8 @@ The maze is not guaranteed to be solvable, but if the algorithm finds a path it 
 
 The grid is setup with all horizontal and vertical spaces having a distance of 1 unit apart, but the algorithm calculates the distance between two spaces so that diagonal moves are more costly.
 
+The Manhattan distance should not be used for the heuristic in this algorithm since diagonal moves are allowed and it may overestimate the cost from a node to the finish.  This could cause the algorithm to return a non-shortest path.  Euclidean distance could be used as it does not overestimate the distance to the finish, but I have chosen to use Chebyshev's distance as it gets a bit closer to the actual distance using the moves allowed in this maze.
+
 This is a key to the display when the algorithm is finished:
 
 * `'█'` = Wall in the maze
@@ -26,7 +28,6 @@ is an illegal diagonal move, but if the walls do not meet at the corner it would
 
 In the future, these would be good values to have the user pass in as parameters when running the program:
 * Wall density
-* Heuristic (Manhattan vs. Euclidean)
 * Are Diagonal moves allowed?
 * Start space
 * End space
