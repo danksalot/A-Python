@@ -13,6 +13,17 @@ This is a key to the display when the algorithm is finished:
 * `'-'` = Space included in the ClosedSet - evaluated and not included in any shortest path
 * `' '` = Space not evaluated
 
+Two walls that meet at a corner, like a wall at (2,2) and a wall at (3,3) are considered connected so that the path cannot squeeze between these barriers.  For example: 
+```
+0██
+█0
+```
+is an illegal diagonal move, but if the walls do not meet at the corner it would be allowed:
+```
+0 █
+█0
+```
+
 In the future, these would be good values to have the user pass in as parameters when running the program:
 * Wall density
 * Heuristic (Manhattan vs. Euclidean)
