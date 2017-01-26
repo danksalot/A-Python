@@ -1,4 +1,4 @@
-# A-Python
+# AStar-Python
 
 This is a super simple implementation of the AStar Search algorithm in Python.  It generates a maze and tries to solve it.
 The maze is not guaranteed to be solvable, but if the algorithm finds a path it is guaranteed to be a shortest path between the Start and End spaces.
