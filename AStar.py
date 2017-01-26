@@ -24,34 +24,6 @@ class Node:
 		if self.x < size - 1 and grid[self.x + 1][self.y].passable == True:
 			neighbors.append(grid[self.x + 1][self.y])
 		# Diagonals
-		if self.x > 0 and self.y > 0 and grid[self.x - 1][self.y - 1].passable == True:
-			neighbors.append(grid[self.x - 1][self.y - 1])
-import random
-import sys
-import os
-import math
-
-class Node:
-	def __init__(self, x, y):
-		self.x = x
-		self.y = y
-	x = 0
-	y = 0
-	fScore = 0
-	gScore = sys.maxint
-	passable = True
-	fromNode = None
-	def findNeighbors(self):
-		neighbors = []
-		if self.y > 0 and grid[self.x][self.y - 1].passable == True:
-			neighbors.append(grid[self.x][self.y - 1])
-		if self.y < size - 1 and grid[self.x][self.y + 1].passable == True:
-			neighbors.append(grid[self.x][self.y + 1])
-		if self.x > 0 and grid[self.x - 1][self.y].passable == True:
-			neighbors.append(grid[self.x - 1][self.y])
-		if self.x < size - 1 and grid[self.x + 1][self.y].passable == True:
-			neighbors.append(grid[self.x + 1][self.y])
-		# Diagonals
 		if self.x > 0 and self.y > 0 and grid[self.x - 1][self.y - 1].passable == True \
 			and (grid[self.x][self.y - 1].passable == True or grid[self.x - 1][self.y].passable == True):
 			neighbors.append(grid[self.x - 1][self.y - 1])
