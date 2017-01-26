@@ -3,6 +3,8 @@
 This is a super simple implementation of the AStar Search algorithm in Python.  It generates a maze and tries to solve it.
 The maze is not guaranteed to be solvable, but if the algorithm finds a path it is guaranteed to be a shortest path between the Start and End spaces.
 
+The grid is setup with all horizontal and vertical spaces having a distance of 1 unit apart, but the algorithm calculates the distance between two spaces so that diagonal moves are more costly.
+
 This is a key to the display when the algorithm is finished:
 
 * `'|'` = Wall in the maze
@@ -17,3 +19,38 @@ In the future, these would be good values to have the user pass in as parameters
 * Are Diagonal moves allowed?
 * Start space
 * End space
+
+Here is an example output of the algorithm:
+```
+0+█     █ █   █  ███   █  █ █
+█0+█+               █  █   █
+ █00+█ ██  ██ ████  █  █ █   █
+  ██0██   █     ███  █ █ ██  █
+   +0-█+██    █  █  █     █ █
+   █0---██ ███   ███ ███    █
+   +0███ █  █       █  █ █
+   ++0+███ █    █ █ ██     █
+    ++0++  █      █        ███
+    █+█0+█     █     █ ██
+██    ++0++  ██    █  █      █
+█ ██   ++0█+  ██  █      ███
+    █  █++0+██    ██  █    █
+         ++0+█  ██       █
+  █ ██    ++0++████ █   █    █
+ █ ██   █  █+0█    █  █      █
+  █   █   █ ++0█+        ███
+ █ █  ██     ++0++███  █    █
+            █ +█0000++ █    ██
+    █   █  █   █---█0++█ █ █ █
+█  █      █  █ ██-██+0+█  █ █
+  █    ██     █ +--█++0████ █
+   ██  █ ██ █ █ ███ ██0-█
+ █  █ █  █   ██ ██   +0█   ███
+        ███     █  █ +0█++██ █
+  █  █     █ █   ██  ++0-█  █
+█████    █ █ █ █      █0-██  █
+ █     █ █     █   ██ +0██ █ █
+█     █       ██      ++0█++++
+   █    █  █ █     █   ++00000
+Found a path that is 38 nodes long!
+```
