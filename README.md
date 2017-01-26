@@ -7,7 +7,7 @@ The grid is setup with all horizontal and vertical spaces having a distance of 1
 
 This is a key to the display when the algorithm is finished:
 
-* `'|'` = Wall in the maze
+* `'█'` = Wall in the maze
 * `'0'` = Space included in a shortest path
 * `'+'` = Space included in the OpenSet - path found before this one was evaluated though
 * `'-'` = Space included in the ClosedSet - evaluated and not included in any shortest path
