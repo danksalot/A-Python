@@ -48,9 +48,11 @@ def getDistance(toNode, fromNode):
 
 def heuristic(current, end):
 	# Manhattan Distance Heuristic
-	return abs(end.x - current.x) + abs(end.y - current.y)
+	# return abs(end.x - current.x) + abs(end.y - current.y)
 	# Euclidean Distance Heuristic
-	# return math.sqrt((abs(end.x - current.x) ** 2) + (abs(end.y - current.y) ** 2))
+	return math.sqrt((abs(end.x - current.x) ** 2) + (abs(end.y - current.y) ** 2))
+	# Dijkstra's Algorithm doesn't use a heuristic
+	# return 0
 
 def getPath(current):
 	current = grid[current.x][current.y]
@@ -88,10 +90,10 @@ while len(openSet) > 0:
 	openSet.sort(key = lambda x: x.fScore, reverse=True)
 	current = openSet.pop()
 	closedSet.append(current)
-	printPath(current)
+	# printPath(current)
 	if current == end:
 		length = printPath(current)
-		print "Found a path that is", length, "nodes long!"
+		print "Evaluated", len(closedSet), "nodes and found a path that is", length, "nodes long!"
 		exit()
 	for neighbor in current.findNeighbors():
 		if neighbor not in closedSet:
@@ -100,5 +102,5 @@ while len(openSet) > 0:
 				openSet.append(neighbor)
 
 printPath(start)
-print "Could not find a path"
+print "Evaluated", len(closedSet), "nodes and could not find a path"
 exit()
