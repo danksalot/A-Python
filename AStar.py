@@ -26,18 +26,53 @@ class Node:
 		# Diagonals
 		if self.x > 0 and self.y > 0 and grid[self.x - 1][self.y - 1].passable == True:
 			neighbors.append(grid[self.x - 1][self.y - 1])
-		if self.x < size - 1 and self.y > 0 and grid[self.x + 1][self.y - 1].passable == True:
+import random
+import sys
+import os
+import math
+
+class Node:
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+	x = 0
+	y = 0
+	fScore = 0
+	gScore = sys.maxint
+	passable = True
+	fromNode = None
+	def findNeighbors(self):
+		neighbors = []
+		if self.y > 0 and grid[self.x][self.y - 1].passable == True:
+			neighbors.append(grid[self.x][self.y - 1])
+		if self.y < size - 1 and grid[self.x][self.y + 1].passable == True:
+			neighbors.append(grid[self.x][self.y + 1])
+		if self.x > 0 and grid[self.x - 1][self.y].passable == True:
+			neighbors.append(grid[self.x - 1][self.y])
+		if self.x < size - 1 and grid[self.x + 1][self.y].passable == True:
+			neighbors.append(grid[self.x + 1][self.y])
+		# Diagonals
+		if self.x > 0 and self.y > 0 and grid[self.x - 1][self.y - 1].passable == True \
+			and (grid[self.x][self.y - 1].passable == True or grid[self.x - 1][self.y].passable == True):
+			neighbors.append(grid[self.x - 1][self.y - 1])
+		if self.x < size - 1 and self.y > 0 and grid[self.x + 1][self.y - 1].passable == True \
+			and (grid[self.x][self.y - 1].passable == True or grid[self.x + 1][self.y].passable == True):
 			neighbors.append(grid[self.x + 1][self.y - 1])
-		if self.x > 0 and self.y < size - 1 and grid[self.x - 1][self.y + 1].passable == True:
+		if self.x > 0 and self.y < size - 1 and grid[self.x - 1][self.y + 1].passable == True \
+			and (grid[self.x][self.y + 1].passable == True or grid[self.x - 1][self.y].passable == True):
 			neighbors.append(grid[self.x - 1][self.y + 1])
-		if self.x < size - 1 and self.y < size - 1 and grid[self.x + 1][self.y + 1].passable == True:
+		if self.x < size - 1 and self.y < size - 1 and grid[self.x + 1][self.y + 1].passable == True \
+			and (grid[self.x][self.y + 1].passable == True or grid[self.x + 1][self.y].passable == True):
 			neighbors.append(grid[self.x + 1][self.y + 1])
 		return neighbors
 	def explore(self, fromNode):
-		if self.gScore > fromNode.gScore + 1:
-			grid[self.x][self.y].gScore = fromNode.gScore + 1
+		if self.gScore > fromNode.gScore + getDistance(self, fromNode):
+			grid[self.x][self.y].gScore = fromNode.gScore + getDistance(self, fromNode)
 			grid[self.x][self.y].fScore = grid[self.x][self.y].gScore + heuristic(self, end)
 			grid[self.x][self.y].fromNode = grid[fromNode.x][fromNode.y]
+
+def getDistance(toNode, fromNode):
+	return math.sqrt((abs(toNode.x - fromNode.x) ** 2) + (abs(toNode.y - fromNode.y) ** 2))
 
 def heuristic(current, end):
 	# Manhattan Distance Heuristic
@@ -55,7 +90,7 @@ def getPath(current):
 
 def printPath(current):
 	path = getPath(current)
-	print '\n'.join(''.join('0' if node in path else '|' if not node.passable else '+' if node in openSet else '-' if node in closedSet else ' ' for node in row) for row in grid)
+	print '\n'.join(''.join('0' if node in path else unichr(0x2588) if not node.passable else '+' if node in openSet else '-' if node in closedSet else ' ' for node in row) for row in grid)
 	return len(path)
 
 # Declare Variables
