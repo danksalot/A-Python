@@ -51,6 +51,10 @@ def heuristic(current, end):
 	vDiff = abs(end.y - current.y)
 	# Chebyshev's distance
 	# return max(hDiff, vDiff)
+	# Euclidean distance
+	# return math.sqrt((hDiff ** 2) + (vDiff ** 2))
+	# Manhattan distance
+	# return hDiff + vDiff
 	# Diagonal then straight
 	return min(hDiff, vDiff) * math.sqrt(2) + abs(hDiff - vDiff)
 
