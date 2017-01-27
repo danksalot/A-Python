@@ -5,7 +5,13 @@ The maze is not guaranteed to be solvable, but if the algorithm finds a path it 
 
 The grid is setup with all horizontal and vertical spaces having a distance of 1 unit apart, but the algorithm calculates the distance between two spaces so that diagonal moves are more costly.
 
-The Manhattan distance should not be used for the heuristic in this algorithm since diagonal moves are allowed and it may overestimate the cost from a node to the finish.  This could cause the algorithm to return a non-shortest path.  Euclidean distance could be used as it does not overestimate the distance to the finish, but I have chosen to use Chebyshev's distance as it gets a bit closer to the actual distance using the moves allowed in this maze.
+The Manhattan distance, even though it did find the goal in the shortest time, should not be used for the heuristic in this algorithm since diagonal moves are allowed and it may overestimate the cost from a node to the finish.  This could cause the algorithm to return a non-shortest path.  I tried several different heuristics, and one consistently performed better than the rest.  It is a combination heuristic that measures the diagonal distance as far as it can `min(hDiff, vDiff) * math.sqrt(2)`, then adds the straight distance `abs(hDiff - vDiff)` to reach the goal:
+
+`min(hDiff, vDiff) * math.sqrt(2) + abs(hDiff - vDiff)`
+
+Here are the results of my small scale testing:
+
+![alt text](https://github.com/danksalot/AStarPython/blob/5a54354f73a8fa2348e625a2d9f3a64aceeabb5a/HeuristicChart.png "Logo Title Text 1")
 
 This is a key to the display when the algorithm is finished:
 
