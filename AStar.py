@@ -52,7 +52,7 @@ def heuristic(current, end):
 	# Chebyshev's distance
 	return max(hDiff, vDiff)
 	# Diagonal then straight
-	# return min(hDiff, vDiff) * sqrt(2) + abs(hDiff - vDiff)
+	# return min(hDiff, vDiff) * math.sqrt(2) + abs(hDiff - vDiff)
 
 def getPath(current):
 	current = grid[current.x][current.y]
