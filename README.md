@@ -11,7 +11,7 @@ The Manhattan distance, even though it did find the goal in the shortest time, s
 
 Here are the results of my small scale testing:
 
-![alt text](https://github.com/danksalot/AStarPython/blob/5a54354f73a8fa2348e625a2d9f3a64aceeabb5a/HeuristicChart.png "Logo Title Text 1")
+![alt text](https://github.com/danksalot/AStarPython/blob/master/HeuristicChart.png "Heuristic Comparison Chart")
 
 This is a key to the display when the algorithm is finished:
 
