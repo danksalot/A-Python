@@ -50,9 +50,9 @@ def heuristic(current, end):
 	hDiff = abs(end.x - current.x)
 	vDiff = abs(end.y - current.y)
 	# Chebyshev's distance
-	return max(hdiff, vdiff)
+	return max(hDiff, vDiff)
 	# Diagonal then straight
-	# return min(hdiff, vdiff) * sqrt(2) + abs(hdiff - vdiff)
+	# return min(hDiff, vDiff) * sqrt(2) + abs(hDiff - vDiff)
 
 def getPath(current):
 	current = grid[current.x][current.y]
