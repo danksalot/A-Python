@@ -34,3 +34,10 @@ class Grid:
 			return 1			# Straight path
 		else:
 			return sqrt(2)			# Diagonal path
+		
+	def heuristic(self, a, goal):
+		(x1, y1) = a
+		(x2, y2) = goal
+		hDiff = abs(x1 - x2)
+		vDiff = abs(y1 - y2)
+		return min(hDiff, vDiff) * sqrt(2) + abs(hDiff - vDiff)
