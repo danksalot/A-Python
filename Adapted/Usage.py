@@ -1,7 +1,7 @@
 from __future__ import print_function
 from random import sample
 from itertools import product
-from grid import Grid
+from Grid import Grid
 from AStar import a_star_search
 
 def draw_tile(graph, id, style, width):
