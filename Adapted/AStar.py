@@ -14,13 +14,6 @@ class PriorityQueue:
 	def get(self):
 		return heapq.heappop(self.elements)[1]
 
-def heuristic(a, b):
-	(x1, y1) = a
-	(x2, y2) = b
-	hDiff = abs(x1 - x2)
-	vDiff = abs(y1 - y2)
-	return min(hDiff, vDiff) * sqrt(2) + abs(hDiff - vDiff)
-
 def reconstruct_path(came_from, start, goal):
 	current = goal
 	path = [current]
@@ -51,7 +44,7 @@ def a_star_search(graph, start, goal):
 			new_cost = cost_so_far[current] + graph.cost(current, next)
 			if next not in cost_so_far or new_cost < cost_so_far[next]:
 				cost_so_far[next] = new_cost
-				priority = new_cost + heuristic(goal, next)
+				priority = new_cost + graph.heuristic(next, goal)
 				openSet.put(next, priority)
 				came_from[next] = current
 	
