@@ -31,6 +31,6 @@ class Grid:
 		(x1, y1) = a
 		(x2, y2) = b
 		if x1 == x2 or y1 == y2:
-			return 1				# Straight path
+			return 1			# Straight path
 		else:
 			return sqrt(2)			# Diagonal path
