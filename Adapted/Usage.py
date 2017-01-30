@@ -15,13 +15,13 @@ def draw_tile(graph, id, style, width):
 	return r
 
 def draw_grid(graph, width=2, **style):
-	print ("#" * (graph.height * width + 2))
+	print (unichr(0x2588) * (graph.height * width + 2))
 	for y in range(graph.height):
-		print ("#", end="")
+		print (unichr(0x2588), end="")
 		for x in range(graph.width):
 			print("%%-%ds" % width % draw_tile(graph, (x, y), style, width), end="")
-		print("#")
-	print ("#" * (graph.height * width + 2))
+		print(unichr(0x2588))
+	print (unichr(0x2588) * (graph.height * width + 2))
 
 width = 30
 height = 30
